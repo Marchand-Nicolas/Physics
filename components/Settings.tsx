@@ -1,6 +1,6 @@
 import styles from '../styles/components/Settings.module.css'
 
-export default function Settings({ setMaxX, setMaxY, setGravity, setResolution, setSpawnDelay, maxX, maxY, gravity, resolution, spawnDelay, setDefaultXVelocity, setDefaultYVelocity, defaultXVelocity, defaultYVelocity }) {
+export default function Settings({ setMaxX, setMaxY, setGravity, setResolution, setSpawnDelay, maxX, maxY, gravity, resolution, spawnDelay, setDefaultXVelocity, setDefaultYVelocity, defaultXVelocity, defaultYVelocity }: { setMaxX: (maxX: number) => void, setMaxY: (maxY: number) => void, setGravity: (gravity: number) => void, setResolution: (resolution: number) => void, setSpawnDelay: (spawnDelay: number) => void, maxX: number, maxY: number, gravity: number, resolution: number, spawnDelay: number, setDefaultXVelocity: (defaultXVelocity: number) => void, setDefaultYVelocity: (defaultYVelocity: number) => void, defaultXVelocity: number, defaultYVelocity: number }) {
     return (
         <div className={styles.settingsContainer}>
             <h1>Settings</h1>

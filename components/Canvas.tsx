@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import render from '../utils/render';
 import simulate from '../utils/simulate';
 
-export default function Canvas({ maxX, maxY, gravity, resolution, spawnDelay, defaultXVelocity, defaultYVelocity, ...props }) {
+export default function Canvas({ maxX, maxY, gravity, resolution, spawnDelay, defaultXVelocity, defaultYVelocity, ...props }: { maxX: number, maxY: number, gravity: number, resolution: number, spawnDelay: number, defaultXVelocity: number, defaultYVelocity: number, [key: string]: any }) {
     const canvasRef = useRef(null)
 
     useEffect(() => {

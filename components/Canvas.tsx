@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react'
 import render from '../utils/render';
 import simulate from '../utils/simulate';
 
-export default function Canvas({ maxX, maxY, gravity, resolution, spawnDelay, ...props }) {
+export default function Canvas({ maxX, maxY, gravity, resolution, spawnDelay, defaultXVelocity, defaultYVelocity, ...props }) {
     const canvasRef = useRef(null)
 
     useEffect(() => {
@@ -82,7 +82,7 @@ export default function Canvas({ maxX, maxY, gravity, resolution, spawnDelay, ..
                     y: 0,
                     radius: 10,
                     type: Math.floor(Math.random()*typeList.length).toString(),
-                    velocity: { x: 20, y: 0 },
+                    velocity: { x: defaultXVelocity, y: defaultYVelocity },
                     acceleration: { x: 0, y: 0 },
                 })
                 simulate(resolution, gravity, maxX, maxY, objects, types)

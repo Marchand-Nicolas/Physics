@@ -14,6 +14,8 @@ export default function Home() {
   const [gravity, setGravity] = useState(0.05)
   const [resolution, setResolution] = useState(4)
   const [spawnDelay, setSpawnDelay] = useState(10) // In Ticks
+  const [defaultXVelocity, setDefaultXVelocity] = useState(20)
+  const [defaultYVelocity, setDefaultYVelocity] = useState(1)
   return (
     <>
       <Head>
@@ -23,8 +25,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Canvas maxX={maxX} maxY={maxY} gravity={gravity} resolution={resolution} spawnDelay={spawnDelay} className={styles.canvas} />
-        <Settings setMaxX={setMaxX} setMaxY={setMaxY} setGravity={setGravity} setResolution={setResolution} setSpawnDelay={setSpawnDelay} maxX={maxX} maxY={maxY} gravity={gravity} resolution={resolution} spawnDelay={spawnDelay} />
+        <Canvas maxX={maxX} maxY={maxY} gravity={gravity} resolution={resolution} spawnDelay={spawnDelay} defaultXVelocity={defaultXVelocity} defaultYVelocity={defaultYVelocity} className={styles.canvas} />
+        <Settings setMaxX={setMaxX} setMaxY={setMaxY} setGravity={setGravity} setResolution={setResolution} setSpawnDelay={setSpawnDelay} maxX={maxX} maxY={maxY} gravity={gravity} resolution={resolution} spawnDelay={spawnDelay} setDefaultXVelocity={setDefaultXVelocity} setDefaultYVelocity={setDefaultYVelocity} defaultXVelocity={defaultXVelocity} defaultYVelocity={defaultYVelocity} />
       </main>
     </>
   )

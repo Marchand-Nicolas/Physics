@@ -1,6 +1,6 @@
 import styles from '../styles/components/Settings.module.css'
 
-export default function Settings({ setMaxX, setMaxY, setGravity, setResolution, setSpawnDelay, setReset, maxX, maxY, gravity, resolution, spawnDelay }) {
+export default function Settings({ setMaxX, setMaxY, setGravity, setResolution, setSpawnDelay, maxX, maxY, gravity, resolution, spawnDelay, setDefaultXVelocity, setDefaultYVelocity, defaultXVelocity, defaultYVelocity }) {
     return (
         <div className={styles.settingsContainer}>
             <h1>Settings</h1>
@@ -24,6 +24,14 @@ export default function Settings({ setMaxX, setMaxY, setGravity, setResolution, 
                 <div className={styles.setting}>
                     <label htmlFor="spawnDelay">Spawn delay : {spawnDelay}</label>
                     <input defaultValue={spawnDelay} min={0} max={200} type="range" id="spawnDelay" onChange={(e) => setSpawnDelay(parseInt(e.target.value))} />
+                </div>
+                <div className={styles.setting}>
+                    <label htmlFor="defaultXVelocity">Default X velocity : {defaultXVelocity}</label>
+                    <input defaultValue={defaultXVelocity} min={0} max={100} type="range" id="defaultXVelocity" onChange={(e) => setDefaultXVelocity(parseInt(e.target.value))} />
+                </div>
+                <div className={styles.setting}>
+                    <label htmlFor="defaultYVelocity">Default Y velocity : {defaultYVelocity}</label>
+                    <input defaultValue={defaultYVelocity} min={0} max={100} type="range" id="defaultYVelocity" onChange={(e) => setDefaultYVelocity(parseInt(e.target.value))} />
                 </div>
             </div>
         </div>

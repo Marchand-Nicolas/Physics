@@ -4,6 +4,7 @@ import styles from "../styles/Home.module.css";
 import Canvas from "../components/Canvas";
 import Settings from "../components/Settings";
 import { useState } from "react";
+import Element from "../types/object";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [spawnDelay, setSpawnDelay] = useState(10); // In Ticks
   const [defaultXVelocity, setDefaultXVelocity] = useState(20);
   const [defaultYVelocity, setDefaultYVelocity] = useState(1);
+  const [objects, setObjects] = useState<Element[]>([]);
   return (
     <>
       <Head>
@@ -33,6 +35,7 @@ export default function Home() {
           defaultXVelocity={defaultXVelocity}
           defaultYVelocity={defaultYVelocity}
           className={styles.canvas}
+          setObjects={setObjects}
         />
         <Settings
           setMaxX={setMaxX}
@@ -49,6 +52,7 @@ export default function Home() {
           setDefaultYVelocity={setDefaultYVelocity}
           defaultXVelocity={defaultXVelocity}
           defaultYVelocity={defaultYVelocity}
+          setObjects={setObjects}
         />
       </main>
     </>

@@ -11,6 +11,7 @@ export default function Canvas({
   spawnDelay,
   defaultXVelocity,
   defaultYVelocity,
+  setObjects,
   ...props
 }: {
   maxX: number;
@@ -20,16 +21,15 @@ export default function Canvas({
   spawnDelay: number;
   defaultXVelocity: number;
   defaultYVelocity: number;
+  setObjects: React.Dispatch<React.SetStateAction<Element[]>>;
   [key: string]: any;
 }) {
   const canvasRef = useRef(null);
-  const [objects, setObjects] = React.useState<Element[]>([]);
 
   useEffect(() => {
     if (canvasRef.current === null) return;
     const canvas: HTMLCanvasElement = canvasRef.current;
     const context = canvas.getContext("2d");
-    let loadedObjects: Element[] = [];
 
     const types = {
       "0": {
@@ -66,29 +66,24 @@ export default function Canvas({
     const typeList = Object.keys(types);
 
     const tick = setInterval(() => {
-      /*if ((time % spawnDelay) % 1000 === 0)
-        setObjects((prev: Element[]) => {
-          const objs = [...prev];
-          loadedObjects =
-            objs.length > loadedObjects.length ? objs : loadedObjects;
-          return loadedObjects;
-        });*/
-      if (!(time % spawnDelay)) {
-        loadedObjects.push({
-          x: Math.floor(Math.random() * maxX),
-          y: Math.floor(Math.random() * maxY),
-          radius: 10,
-          type: Math.floor(Math.random() * typeList.length).toString(),
-          velocity: {
-            x: Math.floor(Math.random() * defaultXVelocity),
-            y: Math.floor(Math.random() * defaultYVelocity),
-          },
-          acceleration: { x: 0, y: 0 },
-        });
-        simulate(resolution, gravity, maxX, maxY, loadedObjects, types);
-        render(resolution, context, loadedObjects, types);
-      }
-
+      setObjects((prev: Element[]) => {
+        const objs = [...prev];
+        if (!(time % spawnDelay))
+          objs.push({
+            x: Math.floor(Math.random() * maxX),
+            y: Math.floor(Math.random() * maxY),
+            radius: 10,
+            type: Math.floor(Math.random() * typeList.length).toString(),
+            velocity: {
+              x: Math.floor(Math.random() * defaultXVelocity),
+              y: Math.floor(Math.random() * defaultYVelocity),
+            },
+            acceleration: { x: 0, y: 0 },
+          });
+        simulate(resolution, gravity, maxX, maxY, objs, types);
+        render(resolution, context, objs, types);
+        return objs;
+      });
       time++;
     }, 1000 / 60);
 

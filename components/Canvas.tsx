@@ -70,14 +70,11 @@ export default function Canvas({
         const objs = [...prev];
         if (!(time % spawnDelay))
           objs.push({
-            x: Math.floor(Math.random() * maxX),
-            y: Math.floor(Math.random() * maxY),
+            x: 0,
+            y: 0,
             radius: 10,
             type: Math.floor(Math.random() * typeList.length).toString(),
-            velocity: {
-              x: Math.floor(Math.random() * defaultXVelocity),
-              y: Math.floor(Math.random() * defaultYVelocity),
-            },
+            velocity: { x: defaultXVelocity, y: defaultYVelocity },
             acceleration: { x: 0, y: 0 },
           });
         simulate(resolution, gravity, maxX, maxY, objs, types);

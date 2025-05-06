@@ -1,6 +1,26 @@
 import styles from "../styles/components/Settings.module.css";
 import Element from "../types/object";
 
+type SettingsProps = {
+  setMaxX: (maxX: number) => void;
+  setMaxY: (maxY: number) => void;
+  setGravity: (gravity: number) => void;
+  setResolution: (resolution: number) => void;
+  setSpawnDelay: (spawnDelay: number) => void;
+  maxX: number;
+  maxY: number;
+  gravity: number;
+  resolution: number;
+  spawnDelay: number;
+  setDefaultXVelocity: (defaultXVelocity: number) => void;
+  setDefaultYVelocity: (defaultYVelocity: number) => void;
+  defaultXVelocity: number;
+  defaultYVelocity: number;
+  setObjects: React.Dispatch<React.SetStateAction<Element[]>>;
+  setSpawnAmount: (spawnAmount: number) => void;
+  spawnAmount: number;
+};
+
 export default function Settings({
   setMaxX,
   setMaxY,
@@ -17,23 +37,9 @@ export default function Settings({
   defaultXVelocity,
   defaultYVelocity,
   setObjects,
-}: {
-  setMaxX: (maxX: number) => void;
-  setMaxY: (maxY: number) => void;
-  setGravity: (gravity: number) => void;
-  setResolution: (resolution: number) => void;
-  setSpawnDelay: (spawnDelay: number) => void;
-  maxX: number;
-  maxY: number;
-  gravity: number;
-  resolution: number;
-  spawnDelay: number;
-  setDefaultXVelocity: (defaultXVelocity: number) => void;
-  setDefaultYVelocity: (defaultYVelocity: number) => void;
-  defaultXVelocity: number;
-  defaultYVelocity: number;
-  setObjects: React.Dispatch<React.SetStateAction<Element[]>>;
-}) {
+  setSpawnAmount,
+  spawnAmount,
+}: SettingsProps) {
   return (
     <div className={styles.settingsContainer}>
       <h1>Settings</h1>
@@ -118,6 +124,17 @@ export default function Settings({
             type="range"
             id="defaultYVelocity"
             onChange={(e) => setDefaultYVelocity(parseInt(e.target.value))}
+          />
+        </div>
+        <div className={styles.setting}>
+          <label htmlFor="spawnAmount">Spawn amount : {spawnAmount}</label>
+          <input
+            defaultValue={spawnAmount}
+            min={0}
+            max={100}
+            type="range"
+            id="spawnAmount"
+            onChange={(e) => setSpawnAmount(parseInt(e.target.value))}
           />
         </div>
         <button onClick={() => setObjects([])} className={styles.resetButton}>

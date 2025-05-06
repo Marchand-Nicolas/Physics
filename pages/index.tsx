@@ -17,6 +17,7 @@ export default function Home() {
   const [defaultXVelocity, setDefaultXVelocity] = useState(20);
   const [defaultYVelocity, setDefaultYVelocity] = useState(1);
   const [objects, setObjects] = useState<Element[]>([]);
+  const [spawnAmount, setSpawnAmount] = useState(1);
   return (
     <>
       <Head>
@@ -36,6 +37,7 @@ export default function Home() {
           defaultYVelocity={defaultYVelocity}
           className={styles.canvas}
           setObjects={setObjects}
+          spawnAmount={spawnAmount}
         />
         <Settings
           setMaxX={setMaxX}
@@ -53,6 +55,8 @@ export default function Home() {
           defaultXVelocity={defaultXVelocity}
           defaultYVelocity={defaultYVelocity}
           setObjects={setObjects}
+          setSpawnAmount={setSpawnAmount}
+          spawnAmount={spawnAmount}
         />
       </main>
     </>
